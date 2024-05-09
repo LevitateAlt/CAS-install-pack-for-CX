@@ -1,0 +1,491 @@
+/*
+ * ControlX
+ *
+ * Forked from nLaunchy https://github.com/Excale/nLaunchy
+ *
+ * Copyright (C) 2012-2013 nLaunch team
+ * Copyright (C) 2013      nLaunch CX guy
+ * Copyright (C) 2013-2016 Excale
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2, as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA.
+ */
+
+// see Makefile for included Ndless installers
+
+#include "../types.h"
+#include "../patchos.h"
+#include "../patchndless.h"
+
+#ifdef OS_31
+	#define NDLESS_31
+#endif
+#ifdef OS_36
+	#define NDLESS_36
+#endif
+#ifdef OS_391
+	#define NDLESS_391
+#endif
+#ifdef OS_403
+	#define NDLESS_403
+#endif
+#ifdef OS_42
+	#define NDLESS_42
+#endif
+#ifdef OS_43
+	#define NDLESS_43
+#endif
+#ifdef OS_44
+	#define NDLESS_44
+#endif
+
+
+#if	defined(NDLESS_31) || defined(NDLESS_36) || defined(NDLESS_391) || defined(NDLESS_403) || defined(NDLESS_42) || defined(NDLESS_430_547) || defined(NDLESS_43) || defined(NDLESS_440_531) || defined(NDLESS_44)
+	#define PATCH_NDLESS
+#endif
+#if defined(OS_301) || defined(OS_31) || defined(OS_320_1212) || defined(OS_320_1219) || defined(OS_33) || defined(OS_36) || defined(OS_39) || defined(OS_391) || defined(OS_400)
+	#define PATCH_NBOOT
+#endif
+#if (defined(OS_36) && !defined(NDLESS_36)) || (defined(OS_39) && !defined(NDLESS_39)) || (defined(OS_391) && !defined(NDLESS_391)) || (defined(OS_400) && !defined(NDLESS_400)) || (defined(OS_402) && !defined(NDLESS_402)) || (defined(OS_403) && !defined(NDLESS_403)) || (defined(OS_42) && !defined(NDLESS_42)) || (defined(OS_430_547) && !defined(NDLESS_430_547)) || (defined(OS_43) && !defined(NDLESS_43)) || (defined(OS_440_531) && !defined(NDLESS_440_531)) || (defined(OS_44) && !defined(NDLESS_44))
+	#define PATCH_BOOT2UPD
+#endif
+#if defined(OS_36) || defined(OS_39) || defined(OS_391) || defined(OS_400) || defined(OS_402) || defined(OS_403) || defined(OS_42) || defined(OS_430_547) || defined(OS_43) || defined(OS_440_531) || defined(OS_44)
+	#define PATCH_SELFD
+#endif
+
+//	os:	CX					CX_CAS
+#ifdef PATCH_SELFD
+	static const uint32_t selfd_patch_addr[] = { // patch discrepency for OS 3.6+
+#if defined(OS_36)
+        SELFD_CX360_5XX,	SELFD_CXC360_546_550,
+#endif
+#if defined(OS_39)
+        SELFD_CX390_463,	SELFD_CXC390_463,
+#endif
+#if defined(OS_391)
+        SELFD_CX391_38,		SELFD_CXC391_38,
+#endif
+#if defined(OS_400)
+        SELFD_CX400_235,	SELFD_CXC400_235,
+#endif
+#if defined(OS_402)
+        SELFD_CX402_27,		SELFD_CXC402_27,
+#endif
+#if defined(OS_403)
+        SELFD_CX403_29,		SELFD_CXC403_29,
+#endif
+#if defined(OS_42)
+        SELFD_CX420_532,	SELFD_CXC420_532,
+#endif
+#if defined(OS_430_547)
+							SELFD_CXC430_547,
+#endif
+#if defined(OS_43)
+        SELFD_CX430_702,	SELFD_CXC430_702,
+#endif
+#if defined(OS_440_531)
+							SELFD_CXC440_531,
+#endif
+#if defined(OS_44)
+		SELFD_CX440_532,	SELFD_CXC440_532,
+#endif
+    };
+#endif
+#ifdef PATCH_BOOT2UPD
+	static const uint32_t boot2upd_patch_addr[] = { // patch Boot2upd for OS 3.6+ when no Ndless
+#if defined(OS_36) && !defined(NDLESS_36)
+        BOOT2UPD_CX360_5XX,	BOOT2UPD_CXC360_546_550,
+#endif
+#if defined(OS_39) && !defined(NDLESS_39)
+        BOOT2UPD_CX390_46X,	BOOT2UPD_CXC390_46X,
+#endif
+#if defined(OS_391) && !defined(NDLESS_391)
+        BOOT2UPD_CX391_38,	BOOT2UPD_CXC391_38,
+#endif
+#if defined(OS_400) && !defined(NDLESS_400)
+        BOOT2UPD_CX400_235,	BOOT2UPD_CXC400_235,
+#endif
+#if defined(OS_402) && !defined(NDLESS_402)
+        BOOT2UPD_CX402_27,	BOOT2UPD_CXC402_27,
+#endif
+#if defined(OS_403) && !defined(NDLESS_403)
+        BOOT2UPD_CX403_29,	BOOT2UPD_CXC403_29,
+#endif
+#if defined(OS_42) && !defined(NDLESS_42)
+        BOOT2UPD_CX420_532,	BOOT2UPD_CXC420_532,
+#endif
+#if defined(OS_430_547) && !defined(NDLESS_430_547)
+							BOOT2UPD_CXC430_547,
+#endif
+#if defined(OS_43) && !defined(NDLESS_43)
+        BOOT2UPD_CX430_702,	BOOT2UPD_CXC430_702,
+#endif
+#if defined(OS_440_531) && !defined(NDLESS_440_531)
+							BOOT2UPD_CXC440_53X,
+#endif
+#if defined(OS_44) && !defined(NDLESS_44)
+		BOOT2UPD_CX440_532,	BOOT2UPD_CXC440_53X,
+#endif
+    };
+#endif
+#ifdef PATCH_NBOOT
+	static const uint32_t nboot_patch_addr[] = { // nBoot patch for OS 4.0.0-
+#ifdef OS_301
+		NBOOT_CX301_1753,	NBOOT_CXC301_1753,
+#endif
+#ifdef OS_302_1791
+		NBOOT_CX302_1791,
+#endif
+#ifdef OS_302_1793
+		NBOOT_CX302_1793,
+#endif
+#ifdef OS_302_1791
+		NBOOT_CXC302_1791,
+#endif
+#ifdef OS_302_1793
+		NBOOT_CXC302_1793,
+#endif
+#ifdef OS_31
+        NBOOT_CX310_392,	NBOOT_CXC310_392,
+#endif
+#if defined(OS_320_1212) || defined(OS_320_1219)
+        NBOOT_CX320_121X,	NBOOT_CXC320_121X,
+#endif
+#if defined(OS_323) || defined(OS_324)
+        NBOOT_CX32X_123X,	NBOOT_CXC32X_123X,
+#endif
+#ifdef OS_33
+							NBOOT_CXC330_538,
+#endif
+#ifdef OS_36
+        NBOOT_CX360_5XX,	NBOOT_CXC360_546_550,
+#endif
+#ifdef OS_39
+        NBOOT_CX390_46X,	NBOOT_CXC390_46X,
+#endif
+#ifdef OS_391
+        NBOOT_CX391_38,		NBOOT_CXC391_38,
+#endif
+#ifdef OS_400
+        NBOOT_CX400_235,	NBOOT_CXC400_235,
+#endif
+    };
+#endif
+void __attribute__((naked)) ndless_loader(void) {
+#ifdef PATCH_NDLESS
+    static uint32_t ndless_loader[] = { NDLESS_LOADER };
+    static const uint32_t ndless_load_addr[] = {
+#ifdef NDLESS_31
+        BOOT2UPD_CX310_392,	BOOT2UPD_CXC310_392,
+#endif
+#ifdef NDLESS_36
+        BOOT2UPD_CX360_5XX,	BOOT2UPD_CXC360_546_550,
+#endif
+#ifdef NDLESS_391
+        BOOT2UPD_CX391_38,	BOOT2UPD_CXC391_38,
+#endif
+#ifdef NDLESS_403
+        BOOT2UPD_CX403_29, 	BOOT2UPD_CXC403_29,
+#endif
+#ifdef NDLESS_42
+        BOOT2UPD_CX420_532, BOOT2UPD_CXC420_532,
+#endif
+#ifdef NDLESS_430_547
+							BOOT2UPD_CXC430_547,
+#endif
+#ifdef NDLESS_43
+        BOOT2UPD_CX430_702,	BOOT2UPD_CXC430_702,
+#endif
+#ifdef NDLESS_440_531
+							BOOT2UPD_CXC440_531,
+#endif
+#ifdef NDLESS_44
+		BOOT2UPD_CX440_532,	BOOT2UPD_CXC440_53X,
+#endif
+    };
+    static const uint32_t ndless_loader_model_specific[][5] = {
+        /* fopen,				stat,		 			malloc,					fread,				fclose */
+#ifdef NDLESS_31
+        {FOPEN_CX310_392,		STAT_CX310_392,			MALLOC_CX310_392,		FREAD_CX310_392,		FCLOSE_CX310_392},
+        {FOPEN_CXC310_392,		STAT_CXC310_392,		MALLOC_CXC310_392,		FREAD_CXC310_392,		FCLOSE_CXC310_392},
+#endif
+#ifdef NDLESS_36
+        {FOPEN_CX360_5XX, 		STAT_CX360_5XX,			MALLOC_CX360_5XX,		FREAD_CX360_5XX,		FCLOSE_CX360_5XX},
+        {FOPEN_CXC360_546_550, 	STAT_CXC360_546_550,	MALLOC_CXC360_546_550,	FREAD_CXC360_546_550,	FCLOSE_CXC360_546_550},
+#endif
+#ifdef NDLESS_391
+        {FOPEN_CX391_38,		STAT_CX391_38,			MALLOC_CX391_38,		FREAD_CX391_38,			FCLOSE_CX391_38},
+        {FOPEN_CXC391_38,		STAT_CXC391_38,			MALLOC_CXC391_38,		FREAD_CXC391_38,		FCLOSE_CXC391_38},
+#endif
+#ifdef NDLESS_403
+        {FOPEN_CX403_29,		STAT_CX403_29,			MALLOC_CX403_29,		FREAD_CX403_29,			FCLOSE_CX403_29},
+        {FOPEN_CXC403_29,		STAT_CXC403_29,			MALLOC_CXC403_29,		FREAD_CXC403_29,		FCLOSE_CXC403_29},
+#endif
+#ifdef NDLESS_42
+        {FOPEN_CX420_532,		STAT_CX420_532,			MALLOC_CX420_532,		FREAD_CX420_532,		FCLOSE_CX420_532},
+        {FOPEN_CXC420_532,		STAT_CXC420_532,		MALLOC_CXC420_532,		FREAD_CXC420_532,		FCLOSE_CXC420_532},
+#endif
+#ifdef NDLESS_430_547
+        {FOPEN_CXC430_547,		STAT_CXC430_547,		MALLOC_CXC430_547,		FREAD_CXC430_547,		FCLOSE_CXC430_547},
+#endif
+#ifdef NDLESS_43
+		{FOPEN_CX430_702,		STAT_CX430_702,			MALLOC_CX430_702,		FREAD_CX430_702,		FCLOSE_CX430_702},
+		{FOPEN_CXC430_702,		STAT_CXC430_702,		MALLOC_CXC430_702,		FREAD_CXC430_702,		FCLOSE_CXC430_702},
+#endif
+#ifdef NDLESS_440_531
+		{FOPEN_CXC440_531,		STAT_CXC440_531,		MALLOC_CXC440_531,		FREAD_CXC440_531,		FCLOSE_CXC440_531},
+#endif
+#ifdef NDLESS_44
+		{FOPEN_CX440_532,		STAT_CX440_532,			MALLOC_CX440_532,		FREAD_CX440_532,		FCLOSE_CX440_532},
+		{FOPEN_CXC440_532,		STAT_CXC440_532,		MALLOC_CXC440_532,		FREAD_CXC440_532,		FCLOSE_CXC440_532},
+#endif
+	};
+#endif
+	uint32_t id=*((volatile uint32_t *)0x10000020);
+#if defined(PATCH_NBOOT) || defined(PATCH_SELFD) || defined(PATCH_BOOT2UPD) || defined(PATCH_NDLESS)
+#ifdef PATCH_NBOOT
+	int32_t os_nboot=-1;
+#endif
+#ifdef PATCH_SELFD
+	int32_t os_selfd=-1;
+#endif
+#ifdef PATCH_BOOT2UPD
+	int32_t os_b2upd=-1;
+#endif
+#ifdef PATCH_NDLESS
+	int32_t os_ndless=-1;
+#endif
+	switch (id) { // patch discrepency for OS 3.6+
+#ifdef OS_44
+        case CXC440_532:		os_selfd++;
+	#if !defined(NDLESS_44)
+								os_b2upd++;
+	#else
+								os_ndless++;
+	#endif
+        case CX440_532:			os_selfd++;
+	#if !defined(NDLESS_44)
+								os_b2upd++;
+	#else
+								os_ndless++;
+	#endif
+#endif
+#ifdef OS_440_531
+        case CXC440_531:		os_selfd++;
+	#if !defined(NDLESS_440_531)
+								os_b2upd++;
+	#else
+								os_ndless++;
+	#endif
+#endif
+#ifdef OS_43
+        case CXC430_702:		os_selfd++;
+	#if !defined(NDLESS_43)
+								os_b2upd++;
+	#else
+								os_ndless++;
+	#endif
+        case CX430_702:			os_selfd++;
+	#if !defined(NDLESS_43)
+								os_b2upd++;
+	#else
+								os_ndless++;
+	#endif
+#endif
+#ifdef OS_430_547
+        case CXC430_547:		os_selfd++;
+	#if !defined(NDLESS_430_547)
+								os_b2upd++;
+	#else
+								os_ndless++;
+	#endif
+#endif
+#ifdef OS_42
+        case CXC420_532:		os_selfd++;
+	#if !defined(NDLESS_42)
+								os_b2upd++;
+	#else
+								os_ndless++;
+	#endif
+        case CX420_532:			os_selfd++;
+	#if !defined(NDLESS_42)
+								os_b2upd++;
+	#else
+								os_ndless++;
+	#endif
+#endif
+#ifdef OS_403
+        case CXC403_29:			os_selfd++;
+	#if !defined(NDLESS_403)
+								os_b2upd++;
+	#else
+								os_ndless++;
+	#endif
+        case CX403_29:			os_selfd++;
+	#if !defined(NDLESS_403)
+								os_b2upd++;
+	#else
+								os_ndless++;
+	#endif
+#endif
+#ifdef OS_402
+        case CXC402_27:			os_selfd++;
+	#if !defined(NDLESS_402)
+								os_b2upd++;
+	#endif
+        case CX402_27:			os_selfd++;
+	#if !defined(NDLESS_402)
+								os_b2upd++;
+	#endif
+#endif
+#ifdef OS_400
+        case CXC400_235:		os_selfd++;
+								os_nboot++;
+	#if !defined(NDLESS_400)
+								os_b2upd++;
+	#endif
+        case CX400_235:			os_selfd++;
+								os_nboot++;
+	#if !defined(NDLESS_400)
+								os_b2upd++;
+	#endif
+#endif
+#ifdef OS_391
+        case CXC391_38:			os_selfd++;
+								os_nboot++;
+	#if !defined(NDLESS_391)
+								os_b2upd++;
+	#else
+								os_ndless++;
+	#endif
+        case CX391_38:			os_selfd++;
+								os_nboot++;
+	#if !defined(NDLESS_391)
+								os_b2upd++;
+	#else
+								os_ndless++;
+	#endif
+#endif
+#ifdef OS_39
+        case CXC390_46X:		os_selfd++;
+								os_nboot++;
+	#if !defined(NDLESS_39)
+								os_b2upd++;
+	#endif
+        case CX390_46X:			os_selfd++;
+								os_nboot++;
+	#if !defined(NDLESS_39)
+								os_b2upd++;
+	#endif
+#endif
+#ifdef OS_36
+        case CXC360_546_550:	os_selfd++;
+								os_nboot++;
+	#if !defined(NDLESS_36)
+								os_b2upd++;
+	#else
+								os_ndless++;
+	#endif
+        case CX360_5XX:			os_selfd++;
+								os_nboot++;
+	#if !defined(NDLESS_36)
+								os_b2upd++;
+	#else
+								os_ndless++;
+	#endif
+#endif
+#ifdef OS_33
+        case CXC330_538:		os_nboot++;
+#endif
+#if defined(OS_323) || defined(OS_324)
+	#ifdef OS_323
+		case CXC323_1233:
+	#endif
+	#ifdef OS_324
+		case CXC324_1237:
+	#endif
+								os_nboot++;
+        case CX32X_123X:		os_nboot++;
+#endif
+#if defined(OS_320_1212) || defined(OS_320_1219)
+	#ifdef OS_320_1212
+		case CXC320_1212:
+	#endif
+	#ifdef OS_320_1219
+		case CXC320_1219:
+	#endif
+								os_nboot++;
+	#ifdef OS_320_1212
+		case CX320_1212:
+	#endif
+	#ifdef OS_320_1219
+		case CX320_1219:
+	#endif
+								os_nboot++;
+#endif
+#ifdef OS_31
+        case CXC310_392:		os_nboot++;
+	#ifdef NDLESS_31
+								os_ndless++;
+	#endif
+        case CX310_392:			os_nboot++;
+	#ifdef NDLESS_31
+								os_ndless++;
+	#endif
+#endif
+#if defined(OS_302_1791) || defined(OS_302_1793)
+        case CXC302_179X:
+	#if defined(OS_302_1791) && defined(OS_302_1793)
+			if(*((volatile uint32_t *)(0x10000020)) != CXC302_179X || *((volatile uint32_t *)(0x10831D18)) == 0x6F68702F) // not 3.0.2 or 1793
+								os_nboot++;
+	#endif
+								os_nboot++;
+        case CX302_179X:
+	#if defined(OS_302_1791) && defined(OS_302_1793)
+			if(*((volatile uint32_t *)(0x10000020)) != CX302_179X || *((volatile uint32_t *)(0x107D60E0)) == 0x6F68702F) // not 3.0.2 or 1793
+								os_nboot++;
+	#endif
+								os_nboot++;
+#endif
+#ifdef OS_301
+        case CXC301_1753:		os_nboot++;
+        case CX301_1753:		os_nboot++;
+#endif
+#ifdef PATCH_NBOOT
+			*(uint32_t*)nboot_patch_addr[os_nboot]=0;
+#endif
+#ifdef PATCH_SELFD
+			*(uint32_t*)selfd_patch_addr[os_selfd]=0xE12FFF1E;
+#endif
+#ifdef PATCH_BOOT2UPD
+			*(uint32_t*)boot2upd_patch_addr[os_b2upd]=0xE12FFF1E;
+#endif
+#ifdef PATCH_NDLESS
+			__builtin_memcpy(ndless_loader+OFFSET_MODEL, ndless_loader_model_specific[os_ndless], sizeof(ndless_loader_model_specific[0]));
+			uint32_t * dest = (uint32_t *)ndless_load_addr[os_ndless];
+			for (uint32_t i = 0; i < sizeof(ndless_loader)/sizeof(ndless_loader[0]); i++)
+				*dest++ = ndless_loader[i];
+#endif
+	}
+#endif
+#ifdef OS_36
+	if(id==CXC360_546_550)
+		*(uint32_t*)0x10135C27=0x18;
+	else if(id==CX360_5XX)
+		*(uint32_t*)0x101355D3=0x18;
+#endif
+	__asm volatile(
+        "LDR    PC, =0x10000000 \n"
+    );
+    __builtin_unreachable();
+}

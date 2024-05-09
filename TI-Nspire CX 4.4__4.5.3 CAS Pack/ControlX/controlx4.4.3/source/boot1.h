@@ -1,0 +1,21 @@
+void (*puts)(const char *str);
+void (*load_start_boot2)();
+//int (*memcmp)(const void* ptr1, const void* ptr2, int size);
+//void (*memcpy)(const void* dest, const void* src, int size);
+void (*memset)(void* dest, int val, int size);
+//int (*strlen)(char* str);
+int (*read_nand)(void* dest, uint32_t size, uint32_t nand_offset, int progress_start, int progress_end, void* progress_cb);
+int (*nand_erase_range)(uint32_t start, uint32_t end);
+int (*write_nand)(void* data, uint32_t size, uint32_t nand_offset);
+void (*itoa)(uint32_t n, char* s, int radix);
+int (*is_any_key_pressed)();
+int (*is_rc_pressed)(int row, int col);
+void *progress_callback;
+void (*reset)();
+
+int memcmp(const void* ptr1, const void* ptr2, uint32_t size);
+void* memcpy(const void* dest, const void* src, uint32_t size);
+uint32_t strlen(const char *str);
+void* memmove(void* dest, void* src, uint32_t size);
+const void * memchr ( const void * buf, uint8_t value, uint32_t num );
+const char * strchr ( const char* str, char character );
