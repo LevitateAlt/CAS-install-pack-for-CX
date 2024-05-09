@@ -6,10 +6,10 @@
 **Also, this tutorial is the best method for upgrade compatibility as the other option if you update after installing with the other tutorial can cause issues**
 
  \
-**A) Preparations :** \
+**A) Preparations :**
 If not already done, download and install Ndless, following the [online tutorial](https://tiplanet.org/forum/ndl3ss.php).
 
-**B)Repartitioning :**
+**B) Repartitioning :**
 
  \
 **B1)** Download [nsPartManagic 4.2](https://tiplanet.org/forum/archives_voir.php?id=43277), extract the zip file content, and send the _nsPartManagic.tns_ file on the calculator in any folder. \
@@ -32,7 +32,7 @@ If not already done, download and install Ndless, following the [online tutorial
  \
  \
  \
-**C) Repreparations :** \
+**C) Repreparations :**
 Reinstall an Ndless-able OS and Ndless **4.0 or newer**, following once again the [online tutorial](https://tiplanet.org/forum/ndl3ss.php).
 
  \
@@ -66,7 +66,7 @@ _Current ControlX version will only fully work with Boot2 4.4.0.8 or 4.0.3.49. I
 
  
 
-**F) Install ControlX :** \
+**F) Install ControlX :**
 **F1)** Download [ControlX](https://tiplanet.org/forum/archives_voir.php?id=652778), extract the zip file content and put the _controlx.img.tns_ file on your calculator in any folder. \
 **F2)** On the calculator, open the _controlx.img_ file - this should automatically open it in _BtMg_. \
 **F3)** Type ![](https://lh7-us.googleusercontent.com/P96nZYIoGL5fh9qZSzl1q4DViMRCiWoN2eAcvMMgl3TKwG-is7ToN2tYbXQUqIKBFQbRvvfcvxJh2wn-MxJDI42zmJ6K1LyPLGAlorxoqc4BvvghmqjmKxdL79qbUHDE5ANArL6d7o5agK5d9PWQDXQ) to select the Diags partition. \
