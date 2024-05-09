@@ -26,8 +26,8 @@ If not already done, download and install Ndless, following the [online tutorial
 
 **B8)** Type ![](https://lh7-us.googleusercontent.com/zjmCQbA_knaawkm6pgLT6UgBf8SfcVu7aONlRodR0QrSFFUvpO__Xfk2hFzcTJNfFjMwScbsSDaWU6s2AClRJ1TBvmhZxqPc95Oq1eNDJWrDe4s_4BhW6-Z3gH1T8aM_2bZ8l7ipKejmGYEyMooj3dk) to go back to the main menu. \
 **B9)** Type ![](https://lh7-us.googleusercontent.com/zjmCQbA_knaawkm6pgLT6UgBf8SfcVu7aONlRodR0QrSFFUvpO__Xfk2hFzcTJNfFjMwScbsSDaWU6s2AClRJ1TBvmhZxqPc95Oq1eNDJWrDe4s_4BhW6-Z3gH1T8aM_2bZ8l7ipKejmGYEyMooj3dk) to apply your changes and confirm by typing ![](https://lh7-us.googleusercontent.com/KiAqOn_uNqowOrpu_c3kaZO6HAFL4b-QD5ne5cpkFQYDErup89ThguY6mKNR4F0TZJW0xTJXGFMxlu-o0-QkwhmsUU7tK-fTPFL7JlZJbcwui4LJuT4IYTjLEzQZpgWnpD56lI0SW6KAzCq9OlvsIII). \
-**B10)**Once the program has ended, press any key to exit. \
-**B10)**Press the _reset_ button on the back - the calculator is going to prompt you for a new Operating System.
+**B10)** Once the program has ended, press any key to exit. \
+**B10)** Press the _reset_ button on the back - the calculator is going to prompt you for a new Operating System.
 
  \
  \
@@ -79,7 +79,7 @@ _(in all cases it must be the 1st image to be bootable, and you shouldn't overwr
 If it indicates _Boot2_, type ![](https://lh7-us.googleusercontent.com/m60uFMUsiT1iKoEAZNNy7erH54InzZaEJ_zWmQ4YUpd5TQ-j3CM6AI8nB4yqsdLs_wDvS7V74tIPyzaDd9N1ETKnGBn9476ydkf9LFdi2sY3HSpw4ebh0dheaPnTZNr_uXnN0UBCuiEvBqv6Y2C1oro) to switch it to _Diags_. \
 **F9)** Type ![](https://lh7-us.googleusercontent.com/-tPLiV2EIwmmoDoPg57vwo-f9ckUv4GKrhQpKhqWyICqbxtkpOszzliGS5hk5O82s-gwybh4H_vcIK2LrNBRXiBgBEj5Bp5Z3wPOP4AnaNB3hj1C_KIlQsvcRWhHWt5SvkU4xBkc1p7uxnkkrXXdU1k) to go back to the main menu.
 
-**F10)**Type ![](https://lh7-us.googleusercontent.com/-tPLiV2EIwmmoDoPg57vwo-f9ckUv4GKrhQpKhqWyICqbxtkpOszzliGS5hk5O82s-gwybh4H_vcIK2LrNBRXiBgBEj5Bp5Z3wPOP4AnaNB3hj1C_KIlQsvcRWhHWt5SvkU4xBkc1p7uxnkkrXXdU1k) to quit _BtMg_.
+**F10)** Type ![](https://lh7-us.googleusercontent.com/-tPLiV2EIwmmoDoPg57vwo-f9ckUv4GKrhQpKhqWyICqbxtkpOszzliGS5hk5O82s-gwybh4H_vcIK2LrNBRXiBgBEj5Bp5Z3wPOP4AnaNB3hj1C_KIlQsvcRWhHWt5SvkU4xBkc1p7uxnkkrXXdU1k) to quit _BtMg_.
 
 It's done - you may reset and in theory nBoot/ControlX/Ndless are now here forever - enjoy ! \
  \
