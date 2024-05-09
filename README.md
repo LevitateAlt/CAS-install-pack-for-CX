@@ -1,7 +1,7 @@
 **Credit to critor on** [**TI-Planet**](https://tiplanet.org/forum/viewtopic.php?f=57\&t=18920#installcx) **for the tutorial**\
 **ControlX Complete Installation (CAS or if you only want ControlX too):**
 
-**Note: where it says download I have linked downloads however everything is packaged in the folder named:** [TI-Nspire CX 4.4\_\_4.5.3 CAS Pack](https://github.com/LevitateAlt/CAS-install-pack-for-CX/tree/main/TI-Nspire%20CX%204.4__4.5.3%20CAS%20Pack) **however I would recommend downloading the repository until I create a release.**
+**Note: where it says download I have linked downloads however everything is packaged in the folder named:** [TI-Nspire CX 4.4\_\_4.5.3 CAS Pack](https://github.com/LevitateAlt/CAS-install-pack-for-CX/tree/main/TI-Nspire%20CX%204.4__4.5.3%20CAS%20Pack) **however I would recommend downloading the current release.**
 
 **Also, this tutorial is the best method for upgrade compatibility as the other option if you update after installing with the other tutorial can cause issues**
 
