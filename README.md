@@ -34,9 +34,11 @@ If not already done, download and install Ndless, following the [online tutorial
  \
 **C) Repreparations :**
 Reinstall an Ndless-able OS and Ndless **4.0 or newer**, following once again the [online tutorial](https://tiplanet.org/forum/ndl3ss.php).
+\
 
- \
-**D) Install nBoot :** \
+**D) Install nBoot :** 
+
+\
 **D1)** Download [nBoot](https://tiplanet.org/forum/archives_voir.php?id=652780), extract the zip file content and put the _manuf.img.tns_ file on your calculator in any folder.
 
 **D2)** Download [BtMg](https://tiplanet.org/forum/archives_voir.php?id=10080), extract the zip file content, and put the _BtMg.tns_ file on your calculator in the _/ndless/_ folder. \
